@@ -13,7 +13,7 @@ This project demonstrates how to structure a RESTful Web API in .NET Core by gra
   Shows how the endpoints get mixed and cluttered due to a lack of grouping.
 
 - **Product Endpoints**  
-  Demonstrates clean grouping of endpoints using controller organisation.
+  Demonstrates clean grouping of endpoints.
 
 - **Order Endpoints**  
   Shows how to use **DTOs (Data Transfer Objects)** to separate internal models from API responses.
