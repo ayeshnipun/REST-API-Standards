@@ -51,7 +51,10 @@ public static class VehicleEndpoints
         vehicleGroup.MapGet("/{id:int}", (IMapper mapper, int id) =>
         {
             var vehicle = vehicles.Find(u => u.Id == id);
-            return vehicle is null ? Results.NotFound($"Vehicle with ID {id} was not found.") : Results.Ok(new ApiResponse<VehicleDto> { Data = mapper.Map<VehicleDto>(vehicle) });
+
+            return vehicle is null
+                ? Results.NotFound(new ApiResponse<VehicleDto> { Message = $"Vehicle with ID {id} was not found.", Success = false, Data = null })
+                : Results.Ok(new ApiResponse<VehicleDto> { Data = mapper.Map<VehicleDto>(vehicle) });
         });
 
         vehicleGroup.MapPost("/", (IMapper mapper, Vehicle vehicle) =>

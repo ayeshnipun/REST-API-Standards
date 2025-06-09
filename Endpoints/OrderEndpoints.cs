@@ -64,13 +64,7 @@ public static class OrderEndpoints
         {
             var dto = mapper.Map<OrderDto>(order);
 
-            var response = new ApiResponse<OrderDto>
-            {
-                Data = dto,
-                Message = "Order created successfully"
-            };
-
-            return Results.Created($"/api/orders/{dto.Id}", response);
+            return Results.Created($"/api/orders/{dto.Id}", dto);
         })
         .Produces<Vehicle>(StatusCodes.Status201Created);
     }
