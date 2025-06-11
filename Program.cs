@@ -6,6 +6,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
@@ -14,10 +15,10 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapUserEndpoints();
-app.MapCompanyEndpoints();
-app.MapProductEndpoints();
-app.MapOrderEndpoints();
-app.MapVehicleEndpoints();
+// app.MapCompanyEndpoints();
+// app.MapProductEndpoints();
+// app.MapOrderEndpoints();
+// app.MapVehicleEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

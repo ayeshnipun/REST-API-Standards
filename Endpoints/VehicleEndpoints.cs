@@ -46,7 +46,20 @@ public static class VehicleEndpoints
 
         var vehicleGroup = app.MapGroup("/api/vehicles").WithTags("Vehicle Endpoints");
 
-        vehicleGroup.MapGet("/", (IMapper mapper) => Results.Ok(new ApiResponse<List<VehicleDto>> { Data = mapper.Map<List<VehicleDto>>(vehicles) }));
+        vehicleGroup.MapGet("/", (IMapper mapper) =>
+        {
+            // Map the list of vehicles to a list of VehicleDto objects
+            var vehicleDtos = mapper.Map<List<VehicleDto>>(vehicles);
+
+            // Create an API response with the mapped data
+            var response = new ApiResponse<List<VehicleDto>>
+            {
+                Data = vehicleDtos
+            };
+
+            // Return the response with HTTP 200 OK
+            return Results.Ok(response);
+        });
 
         vehicleGroup.MapGet("/{id:int}", (IMapper mapper, int id) =>
         {
